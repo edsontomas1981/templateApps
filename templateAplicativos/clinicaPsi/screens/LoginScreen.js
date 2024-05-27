@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     justifyContent: 'center',
+    backgroundColor: '#cac7bf',
   },
   botao: {
     backgroundColor: '#2196F3', // Cor de fundo
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.01,   // Reduz a opacidade da sombra para um efeito mais sutil
     shadowRadius: 0.84,
-    
+
   },
   title: {
     fontSize: 24,

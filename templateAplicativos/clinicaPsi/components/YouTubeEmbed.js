@@ -25,13 +25,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#eeeae4',
   },
   videoContainer: {
-    width: 320, // Largura desejada do vídeo
+    width: '100%', // Largura desejada do vídeo
     height: (320 * 9) / 16, // Mantém a proporção 16:9
     overflow: 'hidden', // Esconde partes que ultrapassem os limites
-    backgroundColor: '#eeeae4',
-    marginTop:20,
     borderRadius:10,
-    
   },
   video: {
     width: '100%',
@@ -40,4 +37,3 @@ const styles = StyleSheet.create({
 });
 
 export default YouTubeEmbed;
-
