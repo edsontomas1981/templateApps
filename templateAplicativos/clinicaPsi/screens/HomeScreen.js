@@ -61,7 +61,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
         <View style={styles.cardVideo}>
-          <YouTubeEmbed style={styles.video} videoId="oWdbRuUhwNQ" />
+          <YouTubeEmbed style={styles.video} videoId="" />
         </View>
 
         <View style={styles.carouselContainer}>

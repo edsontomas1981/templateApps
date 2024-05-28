@@ -19,7 +19,6 @@ function CustomDrawerContent(props) {
     <ImageBackground source={require('./assets/images/background.png')} style={styles.backgroundImage}>
       <DrawerContentScrollView {...props}>
         <View style={styles.headerLeft}>
-          <Image source={require('./assets/images/logo.png')} style={styles.logo} />
         </View>
         <DrawerItemList {...props} />
         <TouchableOpacity
@@ -32,10 +31,9 @@ function CustomDrawerContent(props) {
             });
           }}
         >
-          <View style={styles.drawerItemContent}>
-            <Icon name="logout" size={24} color="#FFFFFF" />
-            <Text style={styles.drawerItemText}>Logout</Text>
-          </View>
+          {/* <View style={styles.drawerItemContent}>
+            <Text style={styles.drawerItemText}>Sair</Text>
+          </View> */}
         </TouchableOpacity>
       </DrawerContentScrollView>
     </ImageBackground>
@@ -49,15 +47,15 @@ function DrawerNavigator() {
       initialRouteName="Home"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={({ navigation }) => ({
-        drawerStyle: {
-          backgroundColor: 'transparent', // Definir como transparente para mostrar a imagem de fundo
-        },
-        drawerActiveTintColor: '#FFFFFF', // Cor dos itens ativos
-        drawerInactiveTintColor: '#AAAAAA', // Cor dos itens inativos
+          drawerStyle: {
+            backgroundColor: 'transparent', // Definir como transparente para mostrar a imagem de fundo
+          },
+          drawerActiveTintColor: '#ab896f', // Cor dos itens ativos
+          drawerInactiveTintColor: '#AAAAAA', // Cor dos itens inativos
         headerLeft: () => (
           <View style={styles.headerLeft}>
             <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-              <Icon name="menu" size={25} color="#ab896f" />
+              <Icon name="menu" size={25} color="#ab896f"/>
             </TouchableOpacity>
             <Text style={styles.drawerItemText}>Olá, {usuario}</Text>
           </View>
@@ -83,6 +81,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="FAQ" component={FAQScreen} />
       <Drawer.Screen name="Locais" component={NearbyPlacesScreen} />
       <Drawer.Screen name="Benefits" component={BenefitsScreen} />
+      <Drawer.Screen name="Sair" component={LoginScreen} />
     </Drawer.Navigator>
   );
 }
