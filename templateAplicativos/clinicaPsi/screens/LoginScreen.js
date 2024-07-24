@@ -46,12 +46,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#cac7bf',
   },
   botao: {
-    backgroundColor: '#2196F3', // Cor de fundo
     padding: 10,                // Espaçamento interno
     borderRadius: 20,            // Cantos arredondados
     alignItems: 'center',       // Centraliza o texto do botão
     marginTop: 10,              // Espaçamento superior
-    backgroundColor:'#ccac94'
+    backgroundColor:'#aaaaaa'
   },
   textoBotao: {                 // Estilo do texto
     color: 'white',             // Cor do texto

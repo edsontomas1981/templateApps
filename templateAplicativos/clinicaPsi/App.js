@@ -9,6 +9,10 @@ import HomeScreen from './screens/HomeScreen';
 import FAQScreen from './screens/FAQScreen';
 import NearbyPlacesScreen from './screens/NearbyPlacesScreen';
 import BenefitsScreen from './screens/BenefitsScreen';
+import Trips from './screens/Trips';
+import TripLocationScreen from './screens/TripLocationScreen';
+
+
 import { handleEmailPress } from './handlers/emailUtil'; // Ajuste o caminho conforme necessário
 
 const Drawer = createDrawerNavigator();
@@ -19,7 +23,6 @@ function CustomDrawerContent(props) {
     <ImageBackground source={require('./assets/images/background.png')} style={styles.backgroundImage}>
       <DrawerContentScrollView {...props}>
         <View style={styles.headerLeft}>
-          <Image source={require('./assets/images/logo.png')} style={styles.logo} />
         </View>
         <DrawerItemList {...props} />
         <TouchableOpacity
@@ -33,7 +36,7 @@ function CustomDrawerContent(props) {
           }}
         >
           <View style={styles.drawerItemContent}>
-            <Icon name="logout" size={24} color="#FFFFFF" />
+            <Icon name="logout" size={24} color="#aaaaaa" />
             <Text style={styles.drawerItemText}>Logout</Text>
           </View>
         </TouchableOpacity>
@@ -57,7 +60,7 @@ function DrawerNavigator() {
         headerLeft: () => (
           <View style={styles.headerLeft}>
             <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-              <Icon name="menu" size={25} color="#ab896f" />
+              <Icon name="menu" size={25} color="#000000" />
             </TouchableOpacity>
             <Text style={styles.drawerItemText}>Olá, {usuario}</Text>
           </View>
@@ -65,23 +68,23 @@ function DrawerNavigator() {
         headerRight: () => (
           <View style={styles.headerRight}>
             <TouchableOpacity style={styles.iconButton} onPress={() => { /* lógica para logout */ }}>
-              <Icon name="email" size={25} color="#ab896f" />
+              <Icon name="email" size={25} color="#000000" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconButton} onPress={() => { /* lógica para logout */ }}>
-              <Icon name="logout" size={25} color="#ab896f" />
+              <Icon name="logout" size={25} color="#000000" />
             </TouchableOpacity>
           </View>
         ),
         headerTitle: '',
         headerStyle: {
           height: 80,
-          backgroundColor: '#dcc4b4', // Adiciona a cor de fundo
+          backgroundColor: '#ffffff', // Adiciona a cor de fundo
         },
       })}
     >
       <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="FAQ" component={FAQScreen} />
-      <Drawer.Screen name="Locais" component={NearbyPlacesScreen} />
+      <Drawer.Screen name="Historico de Viagens" component={Trips} />
+      <Drawer.Screen name="Solicitar Viagens" component={TripLocationScreen} />
       <Drawer.Screen name="Benefits" component={BenefitsScreen} />
     </Drawer.Navigator>
   );
@@ -147,6 +150,6 @@ const styles = StyleSheet.create({
   drawerItemText: {
     marginLeft: 10,
     fontSize: 16,
-    color: '#ab896f',
+    color: '#aaaaaa',
   },
 });

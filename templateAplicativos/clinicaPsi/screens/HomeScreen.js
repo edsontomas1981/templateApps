@@ -1,28 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ImageBackground, ScrollView, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import YouTubeEmbed from '../components/YouTubeEmbed';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 const carouselItems = [
-  {
-    title: "Pergunta 1",
-    text: "Resposta para a pergunta 1.",
-  },
-  {
-    title: "Pergunta 2",
-    text: "Resposta para a pergunta 2.",
-  },
-  {
-    title: "Pergunta 3",
-    text: "Resposta para a pergunta 3.",
-  },
-  // Adicionando um item vazio para indicar mais perguntas
-  {
-    title: "Mais perguntas...",
-    text: "Toque para rolar mais perguntas.",
-  },
+  { uri: 'https://via.placeholder.com/200', title: 'Veículo 1' },
+  { uri: 'https://via.placeholder.com/200', title: 'Veículo 2' },
+  { uri: 'https://via.placeholder.com/200', title: 'Veículo 3' },
+  { uri: 'https://via.placeholder.com/200', title: 'Veículo 4' },
 ];
 
 export default function HomeScreen() {
@@ -32,36 +18,45 @@ export default function HomeScreen() {
       style={styles.container}
     >
       <View style={styles.container}>
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <View>
-              <Text style={styles.titulo}>Olá, Edson! 👋</Text>
-            </View>
-            <View>
-              <Image
-                source={require('../assets/images/icone.png')}
-                style={styles.imagem}
-              />
-            </View>
-          </View>
-        </View>
-
         <View style={styles.viewMiniBtns}>
           <TouchableOpacity style={styles.miniBtns}>
-            <Icon name="calendar" size={45} color="#ab896f" />
+            <Icon name="calendar" size={45} color="#000000" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.miniBtnsMeio}>
-            <Icon name="stethoscope" size={45} color="#ab896f" />
+            <Icon name="car" size={45} color="#000000" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.miniBtnsMeio}>
-            <Icon name="medkit" size={45} color="#ab896f" />
+            <Icon name="history" size={45} color="#000000" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.miniBtnsMeio}>
-            <Icon name="smile-o" size={45} color="#ab896f" />
+            <Icon name="smile-o" size={45} color="#000000" />
           </TouchableOpacity>
         </View>
+
         <View style={styles.cardVideo}>
-          <YouTubeEmbed style={styles.video} videoId="oWdbRuUhwNQ" />
+          <View style={styles.header}>
+            <Text style={styles.title}>Última Viagem</Text>
+            <Icon name="car" size={20} color="#000000" />
+          </View>
+          <View style={styles.tripInfo}>
+            <View style={styles.tripDetails}>
+              <Icon name="map-marker" size={20} color="#FF6347" />
+              <Text style={styles.tripText}>Origem: Rua A, 123</Text>
+            </View>
+            <View style={styles.tripDetails}>
+              <Icon name="map-marker" size={20} color="#4682B4" />
+              <Text style={styles.tripText}>Destino: Rua B, 456</Text>
+            </View>
+            <View style={styles.tripDetails}>
+              <Icon name="clock-o" size={20} color="#000000" />
+              <Text style={styles.tripText}>Horário: 12:34 PM</Text>
+            </View>
+          </View>
+          <View style={styles.footer}>
+            <Image source={{ uri: 'https://via.placeholder.com/40' }} style={styles.driverImage} />
+            <Text style={styles.driverName}>Motorista: João Silva</Text>
+            <Text style={styles.tripFare}>R$ 25,00</Text>
+          </View>
         </View>
 
         <View style={styles.carouselContainer}>
@@ -73,11 +68,9 @@ export default function HomeScreen() {
           >
             {carouselItems.map((item, index) => (
               <TouchableOpacity key={index} style={styles.carouselItem}>
-                <Text style={styles.carouselTitle}>{item.title}</Text>
-                <Text style={styles.carouselText}>{item.text}</Text>
+                <Image source={{ uri: item.imageUrl }} style={styles.carouselImage} />
               </TouchableOpacity>
             ))}
-            {/* Adicionando um item vazio no final para indicar mais perguntas */}
             <View style={{ width: 30 }} />
           </ScrollView>
         </View>
@@ -96,30 +89,26 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 20,
     borderRadius: 5,
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
-
-    // Sombra
-    shadowColor: '#000', // Cor da sombra
-    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
-    shadowOpacity: 0.25, // Opacidade da sombra
-    shadowRadius: 3.84, // Raio da sombra
-    elevation: 5, // Elevação (apenas para Android)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   card: {
     marginTop: 0,
     marginBottom: 20,
     padding: 20,
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#aaaaaa',
     borderRadius: 15,
     height: 150,
-
-    // Sombra
-    shadowColor: '#000', // Cor da sombra
-    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
-    shadowOpacity: 0.25, // Opacidade da sombra
-    shadowRadius: 3.84, // Raio da sombra
-    elevation: 5, // Elevação (apenas para Android)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   titulo: {
     fontSize: 18,
@@ -133,13 +122,13 @@ const styles = StyleSheet.create({
   },
   miniBtns: {
     padding: 10,
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     alignItems: 'center',
   },
   miniBtnsMeio: {
     padding: 10,
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     marginLeft: 10,
     alignItems: 'center',
@@ -147,56 +136,88 @@ const styles = StyleSheet.create({
   viewMiniBtns: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     padding: 10,
     borderRadius: 15,
-
-    // Sombra
-    shadowColor: '#000', // Cor da sombra
-    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
-    shadowOpacity: 0.25, // Opacidade da sombra
-    shadowRadius: 3.84, // Raio da sombra
-    elevation: 5, // Elevação (apenas para Android)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   carouselContainer: {
     marginTop: 5,
     alignItems: 'center',
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 15,
     padding: 15,
-    // Sombra
-    shadowColor: '#000', // Cor da sombra
-    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
-    shadowOpacity: 0.25, // Opacidade da sombra
-    shadowRadius: 3.84, // Raio da sombra
-    elevation: 5, // Elevação (apenas para Android)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   carouselContent: {
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 15,
-    padding:10,
-
+    padding: 10,
   },
   carouselItem: {
-    backgroundColor: '#eeeae4',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     width: screenWidth - 120,
     padding: 40,
     marginHorizontal: 10,
-    // Sombra
-    shadowColor: '#000', // Cor da sombra
-    shadowOffset: { width: 0, height: 2 }, // Deslocamento da sombra
-    shadowOpacity: 0.25, // Opacidade da sombra
-    shadowRadius: 3.84, // Raio da sombra
-    elevation: 5, // Elevação (apenas para Android)
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  carouselTitle: {
+  carouselImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  title: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 5,
   },
-  carouselText: {
-    fontSize: 14,
-    color:'#AAAAAA',
+  tripInfo: {
+    marginBottom: 10,
+  },
+  tripDetails: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  tripText: {
+    marginLeft: 10,
+    fontSize: 16,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  driverImage: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  driverName: {
+    flex: 1,
+    marginLeft: 10,
+    fontSize: 16,
+  },
+  tripFare: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
